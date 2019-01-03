@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,10 +17,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window=[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController=[[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]init]];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
+-(void)test2{
+    UIWebView *_webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 100, 300, 300)];
+    NSURL *url=[NSURL URLWithString:@"www.baidu.com"];
+    [_webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
